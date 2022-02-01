@@ -1,4 +1,5 @@
 import uuid
+from utilities import constants
 from io import BytesIO
 from PIL import Image
 
@@ -26,8 +27,8 @@ class Product(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	description = models.TextField(blank=True, null=True)
 	price = models.DecimalField(max_digits=6, decimal_places=2)
-	image = models.ImageField(upload_to='uploads/', blank=True, null=True)
-	thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+	image = models.ImageField(upload_to=constants.generate_image_upload_prefix, blank=True, null=True)
+	thumbnail = models.ImageField(upload_to="uploads/", blank=True, null=True)
 	date_added = models.DateTimeField(auto_now_add=True)
 	
 	class Meta:
