@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'storages',
     'apps.users',
     'apps.products',
+    'apps.orders',
     
     'rest_framework',
     'rest_framework.authtoken',
