@@ -22,14 +22,14 @@ class LatestProductsList(APIView):
 class ProductDetail(APIView):
 	permission_classes = (AllowAny,)
 	
-	def get_object(self, category_slug, product_slug):
+	def get_object(self, category_id, product_id):
 		try:
-			return Product.objects.filter(category__slug=category_slug).get(slug=product_slug)
+			return Product.objects.filter(category__id=category_id).get(id=product_id)
 		except Product.DoesNotExist:
 			raise Http404
 	
-	def get(self, request, category_slug, product_slug):
-		product = self.get_object(category_slug, product_slug)
+	def get(self, request, category_id, product_id):
+		product = self.get_object(category_id, product_id)
 		serializer = ProductSerializer(product)
 		return Response(serializer.data)
 
@@ -37,14 +37,14 @@ class ProductDetail(APIView):
 class CategoryDetail(APIView):
 	permission_classes = (AllowAny,)
 	
-	def get_object(self, category_slug):
+	def get_object(self, category_id):
 		try:
-			return Category.objects.get(slug=category_slug)
+			return Category.objects.get(id=category_id)
 		except Category.DoesNotExist:
 			raise Http404
 	
-	def get(self, request, category_slug, format=None):
-		category = self.get_object(category_slug)
+	def get(self, request, category_id):
+		category = self.get_object(category_id)
 		serializer = CategorySerializer(category)
 		return Response(serializer.data)
 
