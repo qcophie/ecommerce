@@ -6,6 +6,7 @@ from apps.products.serializers import ProductSerializer
 
 
 class MyOrderItemSerializer(serializers.ModelSerializer):
+	"""  This is for my account  """
 	product = ProductSerializer()
 	
 	class Meta:
@@ -14,6 +15,7 @@ class MyOrderItemSerializer(serializers.ModelSerializer):
 
 
 class MyOrderSerializer(serializers.ModelSerializer):
+	"""  This is for my account  """
 	items = MyOrderItemSerializer(many=True)
 	
 	class Meta:
