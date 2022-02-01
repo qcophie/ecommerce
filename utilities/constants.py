@@ -5,7 +5,7 @@ import uuid
 
 def generate_image_upload_prefix(filename):
     ext = filename.split('.')[-1]
-    filename = "%s.%s" % (uuid.uuid4(), ext)
+    filename = f"{uuid.uuid4()}.{ext}"
     today = datetime.now()
     today_path = today.strftime("%Y/%m/%d/%H/%M/%S")
     return f"PRODUCT/{today_path}{filename}"
